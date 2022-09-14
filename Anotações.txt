@@ -6,3 +6,44 @@ Dependências para instalar ao usar o start.spring.io:
 O arquivo application.properties tem uma propriedade que define a porta que 
 vai ser usada ao rodar o Spring Boot:
 		server.port: 80
+
+Depois que você inicia o SpringBoot (mvn spring-boot:run / etc.) ele faz 
+redeploy automaticamente a cada arquivo salvo.
+
+Funcionamento do Controller no Spring:
+    Cada método no Controller deve retornar uma String, que corresponde à view
+    que vai ser invocada de dentro da pasta templates (no exemplo, hello.html).
+
+    A classe Controller precisa da anotação @Controller. Cada método da classe
+    anotada vai ser uma action. Cada ação/método precisa da anotação de 
+    mapeamento (@GetMapping, @PostMapping etc.). O parâmetro value (o default)
+    dessa anotação representa a URI que vai ser usada para acessar a view.
+
+        // Exemplo de ação dentro do Controller:
+        @GetMapping(value = "hello")
+        public String hello(HttpServletRequest request) {
+            String nome = request.getParameter("nome");
+            if (nome == "" || nome == null)
+                nome = "Mundo";
+            request.setAttribute("nome", nome);
+            return "hello";
+        }
+
+    Outra forma de definir atributos é fornecendo um objeto Model como 
+    parâmetro para a ação:
+
+        @GetMapping(value = "hello")
+        public String hello(Model model) {
+            String nome =  "Mundo";
+            model.addAttribute("nome", nome);
+            return "hello";
+        }    
+
+Básico do Thymeleaf:
+    Parâmetros que estão na requisição podem ser acessados pela view através
+    da seguinte sintaxe:
+        <tag th:text="${nomeDaVariavel}>Valor Default</tag>
+
+    O HTML usado pelo Thymeleaf pode ser visto/editado sem precisar de um
+    servidor Web para mostrar seu conteúdo. Veja o Valor Default na tag do
+    exemplo acima.
