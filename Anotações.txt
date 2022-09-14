@@ -1,0 +1,8 @@
+Dependências para instalar ao usar o start.spring.io:
+    Spring Web
+    Thymeleaf
+    Spring Boot DevTools
+
+O arquivo application.properties tem uma propriedade que define a porta que 
+vai ser usada ao rodar o Spring Boot:
+		server.port: 80
