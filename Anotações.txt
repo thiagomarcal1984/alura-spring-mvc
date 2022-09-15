@@ -65,3 +65,34 @@ Básico do Thymeleaf:
 
     O raciocínio para as tags de imagem é semelhante: use *th:src*:
         <img th:src="${pedido.urlImagem}"/>
+
+Sistema de Grid do Bootstrap:
+    Componentes do tipo Grid podem ter suas colunas estilizadas com os 
+    seguintes prefixos de classe (onde n é o número de colunas de 1 a 12):
+        .col-n      => para dispositivos MUITO pequenos.
+        .col-sm-n   => para dispositivos pequenos.
+        .col-md-n   => para dispositivos médios.
+        .col-lg-n   => para dispositivos grandes.
+        .col-xl-n   => para dispositivos MUITO grandes.
+
+    *** Nota: as classe col-*-n só funcionam dentro de um componente row.
+
+    Um componente card-body dentro de um componente card tem um padding que não
+    existiria se não fosse essa classe.
+
+    Classes para margin e padding: 
+        https://getbootstrap.com/docs/5.2/utilities/spacing/
+
+        <type>-<side>-<size>
+
+            Type: m (margin) ou p (padding);
+            Side: 
+                t => top;
+                b => bottom;
+                s => start (esquerda);
+                e => end (direita);
+                x => top and bottom;
+                y => start and end.
+            Size:
+                Números de 1 a 5 ou auto.
+                
