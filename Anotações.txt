@@ -47,3 +47,19 @@ Básico do Thymeleaf:
     O HTML usado pelo Thymeleaf pode ser visto/editado sem precisar de um
     servidor Web para mostrar seu conteúdo. Veja o Valor Default na tag do
     exemplo acima.
+
+    Iterações em uma lista: use o atributo th:each="varLocal : ${list}":
+        <div th:each="pedido: ${pedidos}">
+            <div th:text="${pedido.nomeProduto}">Nome do produto</div>
+        </div>
+
+    **** Repare que as variáveis são acessadas dentro de um ${}. ****
+    **** Sem o ${}, um texto literal é inserido dentro da tag. ****
+
+    Dentro de tags input de formulário, o atributo é *th:value*, não th:text:
+        <input th:value="${pedido.urlProduto}" value="url do produto"/>
+
+    *** Note que o atributo value e th:value não são os mesmos. ***
+
+    O raciocínio para as tags de imagem é semelhante: use *th:src*:
+        <img th:src="${pedido.urlImagem}"/>
