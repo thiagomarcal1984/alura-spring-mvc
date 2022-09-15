@@ -55,6 +55,8 @@ Básico do Thymeleaf:
 
     **** Repare que as variáveis são acessadas dentro de um ${}. ****
     **** Sem o ${}, um texto literal é inserido dentro da tag. ****
+    **** Repare também que a tag que contém th:each também é repetida: ****
+    **** Não é apenas o conteúdo da tag que se repete. ****
 
     Dentro de tags input de formulário, o atributo é *th:value*, não th:text:
         <input th:value="${pedido.urlProduto}" value="url do produto"/>
