@@ -139,3 +139,13 @@ A propriedade navbar-expand serve para que os elementos dentro da navbar se
 expandam na horizontal, ao invés de na vertical. Se você usar algum modificador
 de tamanho de dispositivo (ex.: navbar-expand-lg), os elementos do navbar só
 se expandem se estiverem em um tamanho lg.
+
+Diferença nas anotações RequestMapping e GetMapping:
+    RequestMapping é anotada na **classe**. 
+        Qualquer ação (GetMapping, PostMapping etc.) acrescenta esta anotação.
+    GetMapping é anotada no **método** da classe.
+
+Veja que a String de retorno da ação (GetMapping) indica o caminho relativo até
+a página HTML que queremos que apareça. Exemplo: queremos o formulario.html que
+está dentro de pedidos. O retorno deve ser:
+    return "pedidos/formulario";
