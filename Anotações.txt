@@ -135,3 +135,7 @@ Compare os códigos, eles tem a mesma saída:
     requisição (o input) e o retorno do método fica reservado para os dados 
     da view (o output).
 
+A propriedade navbar-expand serve para que os elementos dentro da navbar se
+expandam na horizontal, ao invés de na vertical. Se você usar algum modificador
+de tamanho de dispositivo (ex.: navbar-expand-lg), os elementos do navbar só
+se expandem se estiverem em um tamanho lg.
