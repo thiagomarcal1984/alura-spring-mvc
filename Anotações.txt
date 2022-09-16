@@ -106,3 +106,8 @@ https://spring.io/guides/gs/accessing-data-mysql/
 Anote um EntityManager com @PersistenceContext para que a dependência seja
 injetada pelo Spring.
 
+A anotação @Autowired instancia um objeto automaticamente. Mas é importante que
+a classe que vai fornecer a instância desejada também tenha alguma anotação que
+permita ao Spring reconhecer a classe. Exemplos de anotações desse tipo: 
+    @Controller, @Service, @Repository.
+
