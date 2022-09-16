@@ -111,3 +111,27 @@ a classe que vai fornecer a instância desejada também tenha alguma anotação 
 permita ao Spring reconhecer a classe. Exemplos de anotações desse tipo: 
     @Controller, @Service, @Repository.
 
+Os controllers Spring podem retornar um objeto ModelAndView ao invés de String.
+Compare os códigos, eles tem a mesma saída: 
+
+    @GetMapping(value = "/home")
+    public String home(Model model) {
+        List<Pedido> pedidos = pedidoRepository.findAll();
+        model.addAttribute("pedidos", pedidos);
+        return "home";
+    }
+
+    @GetMapping("/home")
+    public ModelAndView home() {
+        List<Pedido> pedidos = repository.findAll();
+        ModelAndView mv = new ModelAndView("home");
+        mv.addObject("pedidos", pedidos);
+        return mv; 
+    }   
+
+    As "diferenças" estão nos métodos mv.addObject e model.addAttribute.
+
+    Dessa forma, os parâmetros do método ficam reservados para os dados da 
+    requisição (o input) e o retorno do método fica reservado para os dados 
+    da view (o output).
+
