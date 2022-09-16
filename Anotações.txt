@@ -149,3 +149,50 @@ Veja que a String de retorno da ação (GetMapping) indica o caminho relativo at
 a página HTML que queremos que apareça. Exemplo: queremos o formulario.html que
 está dentro de pedidos. O retorno deve ser:
     return "pedidos/formulario";
+
+Quando trabalhamos com formulários no Spring, é necessário criarmos alguns DTOs
+(Data Transfer Objects) que vão conter os parâmetros da requisição HTTP e vão
+transferi-los para um objeto que será construído pelo próprio DTO.
+
+Por que os DTOs são necessários? 
+
+1) Porque a requisição HTTP só envia strings, e a criação de objetos Java 
+complexos precisam de outros tipos além de Strings.
+
+2) Não usar DTO abre espaço para receber mais dados da requisição do que foi 
+previsto.  Como a classe Pedido têm mais atributos (o valor e a data), podemos
+enviar esses dados também (ao manipular os dados da requisição). Isso é uma 
+falha de segurança chamada Web Parameter Tampering.
+
+3) Não usar DTO expõe o nosso modelo e qualquer mudança nele causaria uma 
+mudança no HTML, acoplamos o código da view ao nosso modelo. Isso vai quebrar
+assim que mudarmos algo no modelo. Como as alterações no modelo são constantes,
+é boa prática criar as classes DTO.
+
+As propriedades do DTO precisam ser iguais aos nomes dos parâmetros enviados 
+pela requisição HTTP, para que o DTO seja preenchido pelo Spring. Não se 
+esqueça dos getters e setters nos DTOs.
+
+Semelhanças da anotação RequestMapping e GetMapping / PostMapping:
+    // Este código...
+        @RequestMapping(method = RequestMethod.GET, value="formulario")
+        public String formulario() {
+            ...
+        }
+
+        @RequestMapping(method = RequestMethod.POST, value="novo")
+        public String novo(RequisicaoNovoPedido requisicao) {
+            ...
+        }
+
+    // ... é igual a este: 
+
+        @GetMapping(value="formulario")
+        public String formulario() {
+            ...
+        }
+
+        @PostMapping(value="novo")
+        public String novo(RequisicaoNovoPedido requisicao) {
+            ...
+        }
