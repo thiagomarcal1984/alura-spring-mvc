@@ -196,3 +196,34 @@ Semelhanças da anotação RequestMapping e GetMapping / PostMapping:
         public String novo(RequisicaoNovoPedido requisicao) {
             ...
         }
+
+******************************************************************************
+Para mexer com validações, use a dependência spring-boot-starter-validation.
+******************************************************************************
+
+O Spring usa a seguinte assinatura para métodos que fazem validação: 
+    @PostMapping("novo")
+    public String metodo(@Valid Objeto objeto, BindingResult result) {
+        ...
+    }
+
+    // Perceba a anotação @Valid no primeiro Objeto. Ele será validado.
+
+Onde Objeto é uma classe cujas propriedades contém anotações de validação do
+pacote javax.validation.constraints.
+
+Thymeleaf: o HTML precisa associar um objeto ao formulário, e associar as 
+propriedades do objeto aos controles de formulário:
+
+    <form th:object="${requisicaoNovoPedido}" action="novo" method="POST" ...>
+        ...
+        <input th:field="*{nomeProduto}" ...>
+
+    Repare que o objeto é referenciado com dólar (${objetoEmMinusculo}), mas 
+    as propriedades são referenciados com estrela (*{propriedade}).
+
+    Use atributo th:object="${objetoEmMinusculo}" no form; 
+        atributo th:field="*{propriedade}" nos campos.
+
+Ao usar th:field, os atributos id, name e value são inseridos automaticamente
+dentro da tag que contém o th:field.
