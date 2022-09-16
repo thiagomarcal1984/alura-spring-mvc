@@ -6,6 +6,6 @@ services:
       MARIADB_ROOT_PASSWORD: root
       MARIADB_USER: user
       MARIADB_PASSWORD: password
-      MARIADB_DATABASE: datos
+      MARIADB_DATABASE: mudi
     ports:
       - 3306:3306

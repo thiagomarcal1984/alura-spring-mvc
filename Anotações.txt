@@ -96,3 +96,13 @@ Sistema de Grid do Bootstrap:
             Size:
                 Números de 1 a 5 ou auto.
                 
+No site start.spring.io podemos apenas visualizar as dependências que 
+precisamos. Vamos colocar as dependências para Spring Data JPA e MySQL Driver.
+Para ver como o pom.xml vai ficar, use o botão "Explore" no site.
+
+As configurações para acessar o MySQL usando Spring Data é explicado  no link:
+https://spring.io/guides/gs/accessing-data-mysql/
+
+Anote um EntityManager com @PersistenceContext para que a dependência seja
+injetada pelo Spring.
+
