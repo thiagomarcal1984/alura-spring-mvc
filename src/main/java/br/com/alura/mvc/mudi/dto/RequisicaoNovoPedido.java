@@ -7,11 +7,11 @@ import javax.validation.constraints.NotNull;
 import br.com.alura.mvc.mudi.model.Pedido;
 
 public class RequisicaoNovoPedido {
-    @NotBlank @NotEmpty @NotNull
+    @NotBlank @NotEmpty(message = "Este campo não pode estar em branco.") @NotNull
     private String nomeProduto;
-    @NotBlank @NotEmpty @NotNull
+    @NotBlank @NotEmpty(message = "Este campo não pode estar em branco.") @NotNull
     private String urlProduto;
-    @NotBlank @NotEmpty @NotNull
+    @NotBlank @NotEmpty(message = "Este campo não pode estar em branco.") @NotNull
     private String urlImagem;
     private String descricao;
 

@@ -227,3 +227,33 @@ propriedades do objeto aos controles de formulário:
 
 Ao usar th:field, os atributos id, name e value são inseridos automaticamente
 dentro da tag que contém o th:field.
+
+O acréscimo dos atributos th:object e th:field exigem da resposta um objeto
+que vai ser injetado no HTML. No exemplo, se o método formulario do controller
+de Pedido não parametrizar o objeto que fica th:object, vai acontecer um erro
+na instanciação do objeto. 
+
+Bootstrap: componente do tipo invalid-feedback só ficam visíveis quando o 
+input relacionado for um component is-invalid:
+    <div class="form-group">
+        <label for="nomeProduto">Produto</label>
+        <input  th:field="*{nomeProduto}" 
+                class="form-control" 
+                th:errorClass="is-invalid">
+        <div class="invalid-feedback" th:errors="*{nomeProduto}">
+            Erros do nome do produto.
+        </div>
+    </div>
+
+Perceba o atributo th:errorClass: se você aplicar o estilo is-invalid 
+diretamente, o input SEMPRE vai ficar aparecendo em vermelho. Colocando no
+atributo th:errorClass, o estilo só é aplicado quando houver erro.
+
+Duas formas de personalizar as mensagens de erro:
+    1) Escrevendo a mensagem como parâmetro da anotação:
+        @NotEmpty(message = "Este campo não pode estar em branco.")
+    2) "Internacionalizando" com um arquivo resources/messages.properties:
+        # Sintaxe: ClasseDeValidacao.nomeClasse.nomePropriedade
+        NotBlank.requisicaoNovoPedido.nomeProduto
+
+Salve os arquivos com o encoding UTF-8.
