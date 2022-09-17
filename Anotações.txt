@@ -332,3 +332,25 @@ th:classappend, junto com um operador ternário para teste:
         href="todos">Todos</a>
     <a th:classappend="${status} == 'aguardando' ? 'active'" 
         href="aguardando">Aguardando</a>
+
+As bibliotecas de formatação de data do Thymeleaf dependem do tipo de objeto 
+de data que é recebido (Calendar, Date, LocalDate). As bibliotecas  para elas 
+são #calendars, #dates e #temporals, respectivamente.
+
+Formatação de números: 
+    Valor: <span th:text="${'R$ ' + 
+                #numbers.formatDecimal(
+                    pedido.valorNegociado, 1, 
+                    'POINT', 2, 'COMMA'
+            )}">
+                200,99
+            </span></div>
+    
+    Repare que dentro de ${} existe uma concatenação, para forçar o R$.
+
+O Thymeleaf também tem o método #numbers.formatCurrency, que recebe um número
+como parâmetro e retorna o valor com o formato da moeda do local do browser.
+
+Condicionais para exibição: th:if e th:unless.
+    th:if       = Exibe o conteúdo se a condição for verdadeira.
+    th:unless   = Exibe o conteúdo se a condição for falsa.
