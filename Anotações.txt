@@ -289,3 +289,16 @@ Existe um atributo "irmão" bem parecido, o th:insert:
 
 A aplicação é idêntica, com a diferença que o th:insert não substitui a div 
 original e sim joga todo o conteúdo dentro dela.
+
+O Spring tem uma String para redirecionamento nos métodos que retornam String:
+    return "redirect:/urlInterna.
+
+Thymeleaf: switch/case:
+    <th:block th:switch="${objeto.propriedade}">
+        <div th:case="'S1'" class="warning" 
+            th:text="${objeto.propriedade}">S1</div>
+        <div th:case="'S2'" class="success" 
+            th:text="${objeto.propriedade}">S2</div>
+        <div th:case="'S3'" class="dark" 
+            th:text="${objeto.propriedade}">S3</div>
+    </th:block>
