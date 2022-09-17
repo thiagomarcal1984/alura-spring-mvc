@@ -302,3 +302,33 @@ Thymeleaf: switch/case:
         <div th:case="'S3'" class="dark" 
             th:text="${objeto.propriedade}">S3</div>
     </th:block>
+
+É possível fornecer os parâmetros da URI nos métodos do controller. Para isso,
+é necessário inserir o nome da variável em GetMapping da URL e referenciar a
+String na assinatura do método com a anotação PathVariable:
+
+    @GetMapping("/{status}")
+    public String porStatus(@PathVariable("status") String status, Model model) {
+        ...
+    }
+
+    Perceba que em GetMapping o parâmetro da URI é envolvido por chaves, sem 
+    caracteres precedentes ($, ~ etc.).
+
+ExceptionHandler: é uma anotação que é usada no Spring para tratar exceções.
+É necessário fornecer como parâmetro para a ExceptionHandler o nome da classe
+que corresponde à exceção que se quer tratar:
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String metodoParaTratarArgumentoIlegal() {
+        return "redirect:/home";
+    }
+
+    O nome do método não interfere na captura da exceção.
+
+Thymeleaf: para definir quais links ficarão ativos, usamos o atributo 
+th:classappend, junto com um operador ternário para teste:
+    <a th:classappend="${status} == null ? 'active'" 
+        href="todos">Todos</a>
+    <a th:classappend="${status} == 'aguardando' ? 'active'" 
+        href="aguardando">Aguardando</a>
