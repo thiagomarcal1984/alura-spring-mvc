@@ -257,3 +257,6 @@ Duas formas de personalizar as mensagens de erro:
         NotBlank.requisicaoNovoPedido.nomeProduto
 
 Salve os arquivos com o encoding UTF-8.
+
+Anotações de Bean Validation: 
+https://docs.jboss.org/hibernate/beanvalidation/spec/2.0/api/javax/validation/constraints/package-summary.html
