@@ -260,3 +260,32 @@ Salve os arquivos com o encoding UTF-8.
 
 Anotações de Bean Validation: 
 https://docs.jboss.org/hibernate/beanvalidation/spec/2.0/api/javax/validation/constraints/package-summary.html
+
+Thymeleaf: Inserção de conteúdos vindos de um template.
+No exemplo, criamos um arquivo chamado base.html, que vai conter os elementos 
+a serem usados nas páginas. Esse arquivo pode ter vários componentes juntos 
+(cabeçalho, rodapé, menu, barras de navegação etc.). A identificação dos 
+componentes pode ser feita:
+    1) por tag (ex., head);
+    2) usando o atributo th:fragment="identificacao(parametro)".
+
+Para invocar um dos componentes que estão no arquivo de template, use:
+    1) <head th:replace="~{base :: head}"></head>   
+        // Para tags.
+    2) <div th:replace="~{base :: logo}"></div>
+        // Para ids.
+    3) <div th:replace="~{base :: titulo('Meus pedidos')}"></div> 
+        // Para ids com parâmetro.
+
+    Nota: Perceba o til (~) antes das chaves e a separação do nome do arquivo
+    da identificacao+parâmetro com dois pontos duplicados (::).
+
+Generalizando: 
+    <tag th:replace="~{template :: nomeFragmento(parametro)}"></tag>
+
+Existe um atributo "irmão" bem parecido, o th:insert:
+
+    <div th:insert="~{base :: titulo('Meus Pedidos')}"></div>
+
+A aplicação é idêntica, com a diferença que o th:insert não substitui a div 
+original e sim joga todo o conteúdo dentro dela.
